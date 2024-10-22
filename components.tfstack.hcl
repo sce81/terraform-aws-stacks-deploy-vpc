@@ -4,7 +4,7 @@ component "vpc" {
     source = "github.com/sce81/terraform-aws-vpc-network"
 
     inputs = {
-        region = each.value
+        region               = each.value
         name                 = var.vpc_name
         env                  = var.env_name
         vpc_cidr             = var.vpc_cidr
@@ -12,4 +12,9 @@ component "vpc" {
         private_subnet_cidr  = var.private_subnet_cidr
         database_subnet_cidr = var.database_subnet_cidr
     }
+    
+  providers = {
+    aws    = provider.aws.configurations[each.value]
+
+  }
 }

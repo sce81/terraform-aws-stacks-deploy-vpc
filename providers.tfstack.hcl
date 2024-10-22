@@ -18,7 +18,7 @@ provider "aws" "configurations" {
 
     default_tags {
     tags = {
-      env       = var.env
+      env       = var.env_name
       terraform = "true"
       terraform_stacks = "true"
     }
