@@ -19,3 +19,11 @@ variable "private_subnet_cidr" {
 variable "database_subnet_cidr" {
     type = list(string)
 }
+variable "identity_token" {
+  type      = string
+  ephemeral = true
+}
+
+variable "role_arn" {
+  type = string
+}
