@@ -32,7 +32,7 @@ deployment "staging" {
 
 deployment "production" {
   inputs = {
-    regions              = ["eu-west-1"]
+    regions              = ["eu-west-1", "us-west-1"]
     role_arn             = "arn:aws:iam::482485466615:role/tfc-wif-simonelliott"
     identity_token       = identity_token.aws.jwt
     vpc_name             = "production"
