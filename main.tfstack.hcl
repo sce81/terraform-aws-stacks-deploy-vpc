@@ -50,36 +50,36 @@ component "igw" {
   }
 }
 
-component "pubic-route" {
-  for_each = var.regions
-
-  source = "github.com/sce81/terraform-aws-internet-gateway"
-  inputs = {
-    name     = var.vpc_name
-    env_name = var.env_name
-    route_name = ["public-route-table"]
-    vpc_id     = component.vpc[each.value].vpc_id
-    subnet_ids = component.vpc[each.value].public_subnet_ids
-  }
-  providers = {
-    aws = provider.aws.configurations[each.value]
-
-  }
-}
-
-component "private-route" {
-  for_each = var.regions
-
-  source = "github.com/sce81/terraform-aws-internet-gateway"
-  inputs = {
-    name     = var.vpc_name
-    env_name = var.env_name
-    route_name = ["private-route-table"]
-    vpc_id     = component.vpc[each.value].vpc_id
-    subnet_ids = component.vpc[each.value].private_subnet_ids
-  }
-  providers = {
-    aws = provider.aws.configurations[each.value]
-
-  }
-}
+//component "pubic-route" {
+//  for_each = var.regions
+//
+//  source = "github.com/sce81/terraform-aws-internet-gateway"
+//  inputs = {
+//    name     = var.vpc_name
+//    env_name = var.env_name
+//    route_name = ["public-route-table"]
+//    vpc_id     = component.vpc[each.value].vpc_id
+//    subnet_ids = component.vpc[each.value].public_subnet_ids
+//  }
+//  providers = {
+//    aws = provider.aws.configurations[each.value]
+//
+//  }
+//}
+//
+//component "private-route" {
+//  for_each = var.regions
+//
+//  source = "github.com/sce81/terraform-aws-internet-gateway"
+//  inputs = {
+//    name     = var.vpc_name
+//    env_name = var.env_name
+//    route_name = ["private-route-table"]
+//    vpc_id     = component.vpc[each.value].vpc_id
+//    subnet_ids = component.vpc[each.value].private_subnet_ids
+//  }
+//  providers = {
+//    aws = provider.aws.configurations[each.value]
+//
+//  }
+//}
