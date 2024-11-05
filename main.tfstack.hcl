@@ -29,6 +29,10 @@ component "natgw" {
       name     = var.vpc_name
       env_name = var.env_name
   }
+  providers = {
+    aws    = provider.aws.configurations[each.value]
+
+  }
 }
 
 component "igw" {
@@ -39,5 +43,9 @@ component "igw" {
       vpc_id   = component.vpc[each.value].vpc_id
       name     = var.vpc_name
       env_name = var.env_name
+  }
+  providers = {
+    aws    = provider.aws.configurations[each.value]
+
   }
 }
