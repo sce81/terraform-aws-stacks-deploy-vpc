@@ -8,7 +8,7 @@ deployment "development" {
     role_arn             = "arn:aws:iam::482485466615:role/tfc-wif-simonelliott"
     identity_token       = identity_token.aws.jwt
     vpc_name             = "development"
-    env_name             = "dev"
+    env_name             = "stacks"
     vpc_cidr             = "10.100.0.0/16"
     public_subnet_cidr   = ["10.100.0.0/24", "10.100.1.0/24", "10.100.2.0/24"]
     private_subnet_cidr  = ["10.100.10.0/24", "10.100.11.0/24", "10.100.12.0/24"]
@@ -22,7 +22,7 @@ deployment "development" {
 //    role_arn             = "arn:aws:iam::482485466615:role/tfc-wif-simonelliott"
 //    identity_token       = identity_token.aws.jwt
 //    vpc_name             = "staging"
-//    env_name             = "staging"
+//    env_name             = "stacks"
 //    vpc_cidr             = "10.200.0.0/16"
 //    public_subnet_cidr   = ["10.200.0.0/24", "10.200.1.0/24", "10.200.2.0/24"]
 //    private_subnet_cidr  = ["10.200.10.0/24", "10.200.11.0/24", "10.200.12.0/24"]
@@ -36,7 +36,7 @@ deployment "development" {
 //    role_arn             = "arn:aws:iam::482485466615:role/tfc-wif-simonelliott"
 //    identity_token       = identity_token.aws.jwt
 //    vpc_name             = "production"
-//    env_name             = "production"
+//    env_name             = "stacks"
 //    vpc_cidr             = "10.210.0.0/16"
 //    public_subnet_cidr   = ["10.210.0.0/24", "10.210.1.0/24", "10.210.2.0/24"]
 //    private_subnet_cidr  = ["10.210.10.0/24", "10.210.11.0/24", "10.210.12.0/24"]
