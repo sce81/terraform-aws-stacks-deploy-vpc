@@ -18,3 +18,26 @@ component "vpc" {
 
   }
 }
+
+component "natgw" {
+  for_each = var.regions
+
+  source = "github.com/sce81/terraform-aws-module-nat-gateway"
+
+  inputs = {
+      vpc_id   = component.vpc[each.value].vpc_id
+      name     = var.vpc_name
+      env_name = var.env_name
+  }
+}
+
+component "igw" {
+  for_each = var.regions
+
+  source = "github.com/sce81/terraform-aws-internet-gateway"
+  inputs = {
+      vpc_id   = component.vpc[each.value].vpc_id
+      name     = var.vpc_name
+      env_name = var.env_name
+  }
+}
