@@ -60,7 +60,6 @@ component "pubic-route" {
     route_name = ["public-route-table"]
     vpc_id     = component.vpc[each.value].vpc_id
     subnet_ids = component.vpc[each.value].public_subnet_ids
-    //  route_info = local.public_route_info
   }
   providers = {
     aws = provider.aws.configurations[each.value]
