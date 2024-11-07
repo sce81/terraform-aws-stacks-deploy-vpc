@@ -50,16 +50,17 @@ component "internet-gateway" {
   }
 }
 
-component "pubic-route" {
+component "public-route" {
   for_each = var.regions
 
   source = "github.com/sce81/terraform-aws-module-vpc-route-table"
   inputs = {
-    name     = var.vpc_name
-    env_name = var.env_name
+    name       = var.vpc_name
+    env_name   = var.env_name
     route_name = ["public-route-table"]
     vpc_id     = component.vpc[each.value].vpc_id
     subnet_ids = component.vpc[each.value].public_subnet_ids
+    route_info = local.public_route_info
   }
   providers = {
     aws = provider.aws.configurations[each.value]
@@ -72,14 +73,25 @@ component "private-route" {
 
   source = "github.com/sce81/terraform-aws-module-vpc-route-table"
   inputs = {
-    name     = var.vpc_name
-    env_name = var.env_name
+    name       = var.vpc_name
+    env_name   = var.env_name
     route_name = ["private-route-table"]
     vpc_id     = component.vpc[each.value].vpc_id
     subnet_ids = component.vpc[each.value].private_subnet_ids
+    route_info = local.private_route_info
   }
   providers = {
     aws = provider.aws.configurations[each.value]
 
   }
+}
+
+removed {
+  source = "github.com/sce81/terraform-aws-module-vpc-route-table"
+
+
+    from = component.public-route
+    providers = {
+    aws = provider.aws.configurations[each.value]
+    }
 }
