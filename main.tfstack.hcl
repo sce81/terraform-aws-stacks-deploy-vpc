@@ -19,7 +19,7 @@ component "vpc" {
   }
 }
 
-component "natgw" {
+component "nat_gateway" {
   for_each = var.regions
 
   source = "github.com/sce81/terraform-aws-module-nat-gateway"
@@ -35,7 +35,7 @@ component "natgw" {
   }
 }
 
-component "igw" {
+component "internet-gateway" {
   for_each = var.regions
 
   source = "github.com/sce81/terraform-aws-internet-gateway"

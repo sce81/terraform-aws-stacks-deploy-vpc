@@ -8,13 +8,13 @@ locals {
   public_route_igw = [
     {
       route_cidr = "0.0.0.0/0"
-      gateway_id = var.enable_igw == false ? null : module.internet-gateway[0].igw
+      gateway_id = var.enable_igw == false ? null : component.internet-gateway[each.value].igw
     }
   ]
   private_route_natgw = [
     {
       route_cidr     = "0.0.0.0/0"
-      nat_gateway_id = var.enable_natgw == false ? null : element(module.nat_gateway[0].id, 0)
+      nat_gateway_id = var.enable_natgw == false ? null : element(component.nat_gateway[each.value].id, 0)
     }
   ]
   ingress_route_tgw = [
