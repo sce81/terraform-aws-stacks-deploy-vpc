@@ -14,8 +14,8 @@ deployment "development" {
     private_subnet_cidr  = ["10.100.10.0/24", "10.100.11.0/24", "10.100.12.0/24"]
     database_subnet_cidr = ["10.100.20.0/24", "10.100.21.0/24", "10.100.22.0/24"]
     tgw_id               = null
-    enable_igw           = false
-    enable_natgw         = false
+    enable_igw           = true
+    enable_natgw         = true
   }
 }
 
