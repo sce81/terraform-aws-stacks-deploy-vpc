@@ -85,13 +85,3 @@ component "private-route" {
 
   }
 }
-
-removed {
-  source = "github.com/sce81/terraform-aws-module-vpc-route-table"
-
-
-    from = component.public-route
-    providers = {
-    aws = provider.aws.configurations[each.value]
-    }
-}
